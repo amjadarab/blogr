@@ -1,0 +1,36 @@
+body {
+    color: $color-grey-dark;
+    font-family: 'Overpass';
+}
+
+.heading-primary {
+    // color: $color-white;
+    display: block;
+    font-size: 4.5rem;
+    font-weight: 400;
+    @include respond(phone){
+        font-size: 3.5rem;
+    }
+}
+
+.heading-secondary {
+    font-size: 3.8rem;
+    font-weight: 700;
+    display: inline-block;
+    @include respond(phone){
+        font-size: 3.3rem;
+    }
+
+}
+
+.heading-tertiary {
+    font-size: 3.2rem;
+    font-weight: 700;
+    @include respond(phone){
+        font-size: 2.7rem;
+    }
+}
+
+.paragraph {
+    font-size: 2rem;
+}

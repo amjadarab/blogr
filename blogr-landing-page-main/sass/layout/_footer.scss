@@ -1,0 +1,57 @@
+.footer{
+    &__bg-color{
+        background-color: $color-secondary-dark-2;
+        border-top-right-radius: 15rem;
+        padding: 4rem 6rem;
+
+    }
+    &__body{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        justify-items: center;
+    }
+    &__logo{
+        width: 15rem;
+    }
+
+    &__box{
+        display: flex;
+        flex-direction: column;
+        // align-items: flex-start;
+        
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+        h2{
+            color: white;
+            font-size: 2rem;
+            padding: .5rem;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: $color-grey-dark;
+            padding: .5rem;
+            transition: all .3s;
+            position: relative;
+            text-align: center;
+            &::after{
+                transition: all .3s;
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 0px;
+                height: 1px;
+                background-color: $color-white;
+            }
+            &:hover{
+                color: $color-white;
+            }
+            &:hover::after{
+                width: 100%;
+            }
+        }
+    }
+    
+}

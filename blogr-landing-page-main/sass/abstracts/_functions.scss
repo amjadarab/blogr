@@ -1,0 +1,13 @@
+.div{
+    padding: 3rem;
+    background-color: lightcoral;
+    &-heading{
+        font-size: 5rem;
+        color: palegoldenrod;
+    }
+
+    &-paragraph{
+        font-size: 2rem;
+        color: purple;
+    }
+}

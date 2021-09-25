@@ -1,0 +1,274 @@
+.nav{
+    max-width: 120rem;
+    margin: 0 auto;
+    color: $color-white;
+    padding: 2.8vw 2rem;
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+
+    &__logo{
+        width: 9rem;
+        height: 4rem;
+    }
+    &__body{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        @include respond(phone){
+            display: none;
+        }
+    }
+
+    &__list{
+       display: flex;
+       list-style: none;
+       margin-left: 1.2vw;
+    }
+
+    &__item{
+        cursor: pointer;
+        &:not(:last-child){
+            margin-right: 1.2vw;
+        }
+        position: relative;
+    }
+    &__item:hover > img{
+        transform: rotate(-180deg);
+    }
+    &__item:hover > &__link::after{
+        width: 100%;
+    }
+    &__item:hover > &__dropdown{
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    &__link{
+      color: $color-white;
+      text-decoration: none;
+      font-size: $default-font-size;
+      margin-right: 2px;
+      position: relative;
+      &::after{
+          content: "";
+          position: absolute;
+          width: 0px;
+          height: 1px;
+          left: 0;
+          bottom:0;
+          background-color: $color-white;
+          transition: all .2s;
+      }
+
+    }
+    &__link + img{
+        transition: all .3s;
+    }
+    &__box-button{
+        
+        &>:first-child{
+            color: white;
+        }
+       
+    }
+
+
+    /***** drop down content style *****/
+
+    &__dropdown{
+        background-color: $color-grey-light-1;
+        font-size: $default-font-size;
+        color: $color-secondary-dark-1;
+        padding: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 1rem 5rem rgba($color-secondary-dark-2, .4);
+        position: absolute;
+        top: 3rem;
+        width: 15rem;
+        transition: all .4s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 6;
+        li{
+            padding: .5rem 0rem;
+            margin: 0 2rem;
+            &:hover{
+                font-weight: 600;
+            }
+        }
+
+    }
+
+}
+
+
+
+.navbar{
+    ////////hamburger button
+    &__hamburger{
+        display: none;
+        @include respond(phone){
+            display: inline-block;
+        }
+    }
+    &__checkbox{
+        display: none;
+    }
+    &__checkbox--btn{
+        position: relative;
+        display: block;
+        height: 4rem;
+        width: 4rem;
+        cursor: pointer;
+        z-index: 900;
+        @include respond(phone){
+            margin-left: auto;
+        }
+    }
+    &__checkbox--icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &,
+        &::after,
+        &::before{
+            width: 4rem;
+            height: 2px;
+            border-radius: 5px;
+            background-color: $color-white;
+            display: inline-block;
+        }
+        &::before,
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .4s;
+        }
+        &::before{
+            top: -.8rem;
+        }
+        &::after{
+            top: .8rem;
+        }
+    }
+    // hover effect of the hamburger menu
+    &__checkbox--btn:hover &__checkbox--icon::before{
+        top: -1rem;
+      
+    }
+    &__checkbox--btn:hover &__checkbox--icon::after{
+        top: 1rem;
+        
+    }
+    
+    
+    // X shape with you click the button
+    &__checkbox:checked + &__checkbox--btn &__checkbox--icon{
+        background-color: transparent;
+    }
+    &__checkbox:checked + &__checkbox--btn &__checkbox--icon::before{
+        top: 0;
+        transform: rotate(135deg);
+        background-color: $color-primary;
+    }
+    &__checkbox:checked + &__checkbox--btn &__checkbox--icon::after{
+        top: 0;
+        transform: rotate(-135deg);
+        background-color: $color-primary;
+    }
+}
+
+.navbar__item:hover .navbar__dropdown{
+    opacity: 1;
+    visibility: visible;
+
+}
+
+.navbar__responsive{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    @include respond(phone){
+        opacity: 1;
+        visibility: visible;
+    }
+
+    padding: 6rem 2rem 2rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    width: 100vw;
+    height: 100%;
+    background: $color-white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    z-index: 400;
+    
+    &-anchor{
+        font-size: 2rem;
+        text-decoration: none;
+        color: $color-secondary;
+        &--1{
+            color: $color-primary;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        &:not(:last-child){
+            padding-bottom: 1rem;
+        }
+        &:hover{
+            font-weight: 600;
+        }
+    }
+
+    &-box-button{
+        margin: 1rem auto 0;
+       & > :first-child{
+        color: $color-secondary;
+        text-decoration: none;
+        font-size: $default-font-size;
+        padding: .8rem 1.8rem .6rem;
+        border-radius: 10rem;
+        transition: border .2s , transform .2s;
+        transform-origin: left;
+        border: 2px solid transparent;
+        display: inline-block;
+        &:hover{
+            border: 2px solid $color-secondary;
+            font-weight: 600;
+            transform: translateY(-3px);
+           
+            box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        }
+        &:active{
+            transform: translateY(-1px);
+        }
+       }
+
+       & > :nth-child(2){
+           color: $color-white;
+           background-image: linear-gradient(to right, rgba($color-primary-light, 1) 0% , rgba($color-primary-dark, 1) 50%);
+           &:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 1rem 2rem rgba($color-black,.2);
+           }
+       }
+    }
+}
+
+// hamburger functionality
+.navbar__checkbox:checked ~ .navbar__responsive{
+    left: 0;
+}
+.navbar__checkbox:checked ~ .navbar__responsive .navbar__responsive-anchor{
+    left: 0;
+    animation: nav-link .5s ease-out;
+    animation-delay: calc(var(--order) * 50ms);
+    animation-fill-mode: backwards;
+}
